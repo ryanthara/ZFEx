@@ -1,2 +1,2 @@
 # ZFEx
-Some little export tool for ZF LaserControl projects
+Some little export tool for Zoller+Fröhlich LaserControl projects for preparing some additional tools.
