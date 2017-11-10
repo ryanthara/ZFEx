@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+    <entry key="copyPNGWarningHeaderText">Files with the same name still exists in the export folder!</entry>
+    <entry key="copyPNGWarningText">ZFEx can overwrite existing files or skip them. As an alternative you can break off copying the png files.</entry>
+    <entry key="copyPNGWarningTitle">Overwrite existing files?</entry>
+    <entry key="exportBtn">choose export folder</entry>
+    <entry key="exportBtnToolTip">select the place of the export folder</entry>
+    <entry key="exportFileChooserTitle">choose export folder</entry>
+    <entry key="exportLabel">Export folder:</entry>
+    <entry key="exportPromptText">export folder</entry>
+    <entry key="filterExtensionDescriptionZF">ZF laser radar project (*.zfprj)</entry>
+    <entry key="informationText1">With ZFEx it is possible to automate some export jobs from ZF laser radar projects, which are normally done with different functions of the full version of ZF LaserControl.</entry>
+    <entry key="informationText2">At first these are copying the 360° panoramic views from the scan points and the corresponding coordinate file.</entry>
+    <entry key="informationText3">For processing this two steps it is necessary to choose first the ZF laser radar project file (*.zfprj) and second an export folder.</entry>
+    <entry key="informationText4">Additionally it is possible to write to coordinate of the standpoints into a JSON file. This file can be used for example in a HTML viewer. </entry>
+    <entry key="projectBtn">choose project file</entry>
+    <entry key="projectBtnToolTip">select laser radar project file to export from</entry>
+    <entry key="projectFileChooserTitle">Select ZF laser radar project</entry>
+    <entry key="projectLabel">Project file:</entry>
+    <entry key="projectPromptText">ZF laser radar project file</entry>
+    <entry key="runBtn">start export</entry>
+    <entry key="runBtnToolTip">start export from ZF laser radar project</entry>
+    <entry key="skipBtn">Skip</entry>
+    <entry key="overwriteBtn">Overwrite</entry>
+    <entry key="statusCreatePNGFolderExists">PNG folder already exists in the export folder %s.</entry>
+    <entry key="statusCreatePNGFolderFailed">Folder PNG could not be created in export folder %s.</entry>
+    <entry key="statusCreatePNGFolderSuccess">Folder PNG created in export folder %s.</entry>
+    <entry key="statusExportPNGFailed">Export of %s panoramic images to the folder %s failed.</entry>
+    <entry key="statusExportPNGSuccess">Export of %s panoramic images to the folder %s successful.</entry>
+    <entry key="statusLaserRadarProjectExportCoordinatesFailed">Stand points was not written to the file %s.</entry>
+    <entry key="statusLaserRadarProjectExportCoordinatesSuccess">Write stand points successful to the file %s.</entry>
+    <entry key="statusLaserRadarProjectReadFailed">error while reading project file %s.</entry>
+    <entry key="statusLaserRadarProjectReadSuccess">read project file %s successful.</entry>
+    <entry key="title">ZFEx - Simple export from ZF laser radar projects</entry>
+    <entry key="viewerBtn">choose viewer folder</entry>
+    <entry key="viewerBtnToolTip">select the folder with the viewer content</entry>
+    <entry key="viewerFileChooserTitle">Choose viewer folder</entry>
+    <entry key="viewerLabel">Viewer folder:</entry>
+    <entry key="viewerPromptText">viewer folder</entry>
+    <entry key="statusExportPNGZero">Did not copy a panoramic picture because they exist in the export folder!</entry>
+    <entry key="cancelBtn">cancel</entry>
+    <entry key="coordinateFileConfirmationTitle">coordinate file still exists!</entry>
+    <entry key="coordinateFileConfirmationHeaderText">coordinate file still exists!</entry>
+    <entry key="coordinateFileConfirmationText">Should the coordinate file be overwritten?</entry>
+    <entry key="viewerFileConfirmationTitle">viewer file still exists!</entry>
+    <entry key="viewerFileConfirmationHeaderText">viewer file still exists!</entry>
+    <entry key="viewerFileConfirmationText">Should the viewer file be overwritten?</entry>
+    <entry key="statusWorkSuccess">All things done successful.</entry>
+    <entry key="statusExportPNGCancelled">Cancel copy of panoramic images.</entry>
+    <entry key="statusViewerExportSuccess">Create viewer file %s.</entry>
+    <entry key="workSuccessTitle">Success</entry>
+    <entry key="workSuccessContentText">All things done successful.</entry>
+    <entry key="workSuccessHeaderText">Work done.</entry>
+    <entry key="statusCopyPNGError">Did not found a .temp folder or any pictures in the project folder.</entry>
+</properties>
