@@ -92,9 +92,9 @@ class FunctionPane extends GridPane {
     }
 
     private Button createExportButton() {
-        Button exportBtn = new Button(ResourceBundleUtils.getLangString(LangStrings.exportBtn));
+        Button exportBtn = new Button(ResourceBundleUtils.getLangString(LangStrings.btn_export));
         exportBtn.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
-        exportBtn.setTooltip(new Tooltip(ResourceBundleUtils.getLangString(LangStrings.exportBtnToolTip)));
+        exportBtn.setTooltip(new Tooltip(ResourceBundleUtils.getLangString(LangStrings.toolTip_exportBtn)));
         exportBtn.setOnAction(event -> exportAction());
 
         return exportBtn;
@@ -102,7 +102,7 @@ class FunctionPane extends GridPane {
 
     private void createExportTextField() {
         exportTextField = new TextField();
-        exportTextField.setPromptText(ResourceBundleUtils.getLangString(LangStrings.exportPromptText));
+        exportTextField.setPromptText(ResourceBundleUtils.getLangString(LangStrings.text_exportPrompt));
 
         exportTextField.setOnDragDetected(event -> {
             Dragboard db = exportTextField.startDragAndDrop(TransferMode.ANY);
@@ -145,8 +145,14 @@ class FunctionPane extends GridPane {
         });
 
         // Set text field value from the command line interface
-        if (!Main.cliParameters.isEmpty() && !Main.cliParameters.get("export_folder").trim().equalsIgnoreCase("")) {
-            exportTextField.setText(Main.cliParameters.get("export_folder").trim());
+        if (!Main.cliParameters.isEmpty()) {
+            try {
+                if (!Main.cliParameters.get("export_folder").trim().equalsIgnoreCase("")) {
+                    viewerTextField.setText(Main.cliParameters.get("export_folder").trim());
+                }
+            } catch (NullPointerException e) {
+                logger.log(Level.SEVERE, "command line parameter 'export_folder=' not set!");
+            }
         }
     }
 
@@ -165,17 +171,17 @@ class FunctionPane extends GridPane {
         getColumnConstraints().addAll(column1, column2, column3);
 
         // Project selection area
-        Label projectLabel = new Label(ResourceBundleUtils.getLangString(LangStrings.projectLabel));
+        Label projectLabel = new Label(ResourceBundleUtils.getLangString(LangStrings.label_project));
         createProjectTextField();
         Button projectBtn = createProjectButton();
 
         // Export selection area
-        Label exportLabel = new Label(ResourceBundleUtils.getLangString(LangStrings.exportLabel));
+        Label exportLabel = new Label(ResourceBundleUtils.getLangString(LangStrings.label_export));
         createExportTextField();
         Button exportBtn = createExportButton();
 
         // Viewer selection area
-        Label viewerLabel = new Label(ResourceBundleUtils.getLangString(LangStrings.viewerLabel));
+        Label viewerLabel = new Label(ResourceBundleUtils.getLangString(LangStrings.label_viewer));
         createViewerTextField();
         Button viewerBtn = createViewerButton();
 
@@ -228,15 +234,15 @@ class FunctionPane extends GridPane {
         });
 
         // Set focus to the project text field for direct shortcut access
-        Platform.runLater(() -> projectBtn.requestFocus());
+        Platform.runLater(projectBtn::requestFocus);
 
         logger.log(Level.FINE, "FunctionPane created successful");
     }
 
     private Button createProjectButton() {
-        Button projectBtn = new Button(ResourceBundleUtils.getLangString(LangStrings.projectBtn));
+        Button projectBtn = new Button(ResourceBundleUtils.getLangString(LangStrings.btn_project));
         projectBtn.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
-        projectBtn.setTooltip(new Tooltip(ResourceBundleUtils.getLangString(LangStrings.projectBtnToolTip)));
+        projectBtn.setTooltip(new Tooltip(ResourceBundleUtils.getLangString(LangStrings.toolTip_projectBtn)));
         projectBtn.setOnAction(event -> projectAction());
 
         return projectBtn;
@@ -244,7 +250,7 @@ class FunctionPane extends GridPane {
 
     private void createProjectTextField() {
         projectTextField = new TextField();
-        projectTextField.setPromptText(ResourceBundleUtils.getLangString(LangStrings.projectPromptText));
+        projectTextField.setPromptText(ResourceBundleUtils.getLangString(LangStrings.text_projectPrompt));
 
         projectTextField.setOnDragOver(event -> {
             Dragboard db = event.getDragboard();
@@ -273,23 +279,29 @@ class FunctionPane extends GridPane {
         });
 
         // Set text field value from the command line interface
-        if (!Main.cliParameters.isEmpty() && !Main.cliParameters.get("project").trim().equalsIgnoreCase("")) {
-            projectTextField.setText(Main.cliParameters.get("project").trim());
+        if (!Main.cliParameters.isEmpty()) {
+            try {
+                if (!Main.cliParameters.get("project").trim().equalsIgnoreCase("")) {
+                    projectTextField.setText(Main.cliParameters.get("project").trim());
+                }
+            } catch (NullPointerException e) {
+                logger.log(Level.SEVERE, "command line parameter 'project=' not set!");
+            }
         }
     }
 
     private void createRunButton() {
-        runBtn = new Button(ResourceBundleUtils.getLangString(LangStrings.runBtn));
+        runBtn = new Button(ResourceBundleUtils.getLangString(LangStrings.btn_run));
         runBtn.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
-        runBtn.setTooltip(new Tooltip(ResourceBundleUtils.getLangString(LangStrings.runBtnToolTip)));
+        runBtn.setTooltip(new Tooltip(ResourceBundleUtils.getLangString(LangStrings.toolTip_runBtn)));
         runBtn.setOnAction(event -> runAction());
         runBtn.setDisable(true);
     }
 
     private Button createViewerButton() {
-        Button viewerBtn = new Button(ResourceBundleUtils.getLangString(LangStrings.viewerBtn));
+        Button viewerBtn = new Button(ResourceBundleUtils.getLangString(LangStrings.btn_viewer));
         viewerBtn.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
-        viewerBtn.setTooltip(new Tooltip(ResourceBundleUtils.getLangString(LangStrings.viewerBtnToolTip)));
+        viewerBtn.setTooltip(new Tooltip(ResourceBundleUtils.getLangString(LangStrings.toolTip_viewerBtn)));
         viewerBtn.setOnAction(event -> viewerAction());
 
         return viewerBtn;
@@ -297,7 +309,7 @@ class FunctionPane extends GridPane {
 
     private void createViewerTextField() {
         viewerTextField = new TextField();
-        viewerTextField.setPromptText(ResourceBundleUtils.getLangString(LangStrings.viewerPromptText));
+        viewerTextField.setPromptText(ResourceBundleUtils.getLangString(LangStrings.text_viewerPrompt));
 
         viewerTextField.setOnDragDetected(event -> {
             Dragboard db = viewerTextField.startDragAndDrop(TransferMode.ANY);
@@ -340,14 +352,20 @@ class FunctionPane extends GridPane {
         });
 
         // Set text field value from the command line interface
-        if (!Main.cliParameters.isEmpty() && !Main.cliParameters.get("viewer_folder").trim().equalsIgnoreCase("")) {
-            viewerTextField.setText(Main.cliParameters.get("viewer_folder").trim());
+        if (!Main.cliParameters.isEmpty()) {
+            try {
+                if (!Main.cliParameters.get("viewer_folder").trim().equalsIgnoreCase("")) {
+                    viewerTextField.setText(Main.cliParameters.get("viewer_folder").trim());
+                }
+            } catch (NullPointerException e) {
+                logger.log(Level.SEVERE, "command line parameter 'viewer_folder=' not set!");
+            }
         }
     }
 
     private void exportAction() {
         DirectoryChooser directoryChooser = new DirectoryChooser();
-        directoryChooser.setTitle(ResourceBundleUtils.getLangString(LangStrings.exportFileChooserTitle));
+        directoryChooser.setTitle(ResourceBundleUtils.getLangString(LangStrings.title_exportFileChooser));
 
         if (!Main.pref.getUserPref("lastUsedExportFolder").trim().equalsIgnoreCase("")) {
             File last = new File(Main.pref.getUserPref("lastUsedExportFolder"));
@@ -367,12 +385,12 @@ class FunctionPane extends GridPane {
 
     private void projectAction() {
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle(ResourceBundleUtils.getLangString(LangStrings.projectFileChooserTitle));
+        fileChooser.setTitle(ResourceBundleUtils.getLangString(LangStrings.title_projectFileChooser));
 
         if (!Main.pref.getUserPref("lastUsedProjectFile").trim().equalsIgnoreCase("")) {
             File last = new File(Main.pref.getUserPref("lastUsedProjectFile"));
 
-            if (last.isFile()) {
+            if (last.isDirectory()) {
                 fileChooser.setInitialDirectory(last);
             }
         }
@@ -418,7 +436,11 @@ class FunctionPane extends GridPane {
         // Copy images
         if (Main.isWrittenStandPointsFile) {
             ExportFileWorker exportFileWorker = new ExportFileWorker(projectFile, exportFolder);
-            exportFileWorker.exportPNG();
+            exportFileWorker.exportBlackAndWhitePNG();
+
+            if (Main.useColorPictures) {
+                exportFileWorker.exportColorJPG();
+            }
         }
 
         // Prepare viewer folder
@@ -430,7 +452,7 @@ class FunctionPane extends GridPane {
 
     private void viewerAction() {
         DirectoryChooser directoryChooser = new DirectoryChooser();
-        directoryChooser.setTitle(ResourceBundleUtils.getLangString(LangStrings.viewerFileChooserTitle));
+        directoryChooser.setTitle(ResourceBundleUtils.getLangString(LangStrings.title_viewerFileChooser));
 
         if (!Main.pref.getUserPref("lastUsedViewerFolder").trim().equalsIgnoreCase("")) {
             File last = new File(Main.pref.getUserPref("lastUsedViewerFolder"));
