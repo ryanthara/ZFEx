@@ -46,13 +46,13 @@ import java.util.logging.Level;
 public abstract class Main extends Application {
 
     /**
-     * The reference to the global FileHandler for logging into a single file.
-     */
-    public static FileHandler fileHandler;
-    /**
      * Contains the URL of the ZFEx website.
      */
     public static final String ZFEx_WEBSITE = "https://code.ryanthara.de/ZFEx";
+    /**
+     * The reference to the global FileHandler for logging into a single file.
+     */
+    public static FileHandler fileHandler;
     /**
      * The reference for read success of the laser radar project.
      */
@@ -81,5 +81,13 @@ public abstract class Main extends Application {
      * The reference to the global application status bar.
      */
     public static StatusPane statusPane;
+    /**
+     * The reference to the use superior coordinate system check box.
+     */
+    public static boolean useSuperiorCoordinateSystem;
+    /**
+     * The reference tot the use color pictures check box.
+     */
+    public static boolean useColorPictures;
 
 } // end of Main
