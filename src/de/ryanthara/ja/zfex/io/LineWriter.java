@@ -26,6 +26,7 @@
 package de.ryanthara.ja.zfex.io;
 
 import de.ryanthara.ja.zfex.Main;
+import de.ryanthara.ja.zfex.tools.Checker;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -76,12 +77,14 @@ class LineWriter {
 
         final Path path = Paths.get(fileName);
 
-        try (BufferedWriter writer = Files.newBufferedWriter(path, Charset.forName("UTF-8"))) {
-            writer.write(builder.toString());
-            success = true;
-        } catch (IOException e) {
-            logger.log(Level.SEVERE, "can not write string builder to file: " + fileName, e);
-            logger.log(Level.SEVERE, e.getMessage());
+        if (Checker.isDirectory(path.toString())) {
+            try (BufferedWriter writer = Files.newBufferedWriter(path, Charset.forName("UTF-8"))) {
+                writer.write(builder.toString());
+                success = true;
+            } catch (IOException e) {
+                logger.log(Level.SEVERE, "can not write string builder to file: " + fileName, e);
+                logger.log(Level.SEVERE, e.getMessage());
+            }
         }
 
         return success;
